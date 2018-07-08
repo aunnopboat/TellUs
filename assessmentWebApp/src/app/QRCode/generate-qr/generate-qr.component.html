@@ -1,0 +1,6 @@
+<div class="container mt-3">
+  <qrcode [qrdata]="angularxQrCode" [size]="256" [level]="'M'"></qrcode>
+   <div class = "mt-3">
+     <input class="text" name="stringcode" #date="ngModel" [(ngModel)]="angularxQrCode" placeholder="String code">
+   </div>
+</div>

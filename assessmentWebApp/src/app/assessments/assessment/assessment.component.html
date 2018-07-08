@@ -1,0 +1,38 @@
+<form #assessmentForm="ngForm" (ngSubmit)="onSubmit(assessmentForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="assessmentService.selectedAssessment.$key">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" name="name" #name="ngModel" [(ngModel)]="assessmentService.selectedAssessment.name" placeholder="Assessment Name" required>
+  </div>
+  <div class="form-group">
+    <label>Date</label>
+    <input class="form-control" name="date" #date="ngModel" [(ngModel)]="assessmentService.selectedAssessment.date" placeholder="date">
+  </div>
+  <div class="form-group">
+    <label>Number</label>
+    <div class="input-group">
+      <input class="form-control" name="number" #number="ngModel" [(ngModel)]="assessmentService.selectedAssessment.number" placeholder="number">
+    </div>
+  </div>
+  <div>
+    <input class="col-md-8 mr-1" name="Q1" placeholder="Question">
+    <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+      <button class="btn btn-default mr-md-1" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">Question type </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownManual">
+        <button class="dropdown-item">paragraph</button>
+        <button class="dropdown-item">short answer</button>
+        <button class="dropdown-item">multiple choice</button>
+        <button class="dropdown-item">checklist</button>
+      </div>
+    </div>
+      <button class="btn btn-default" type="button" (click)="addQuestion()">Add Question</button>
+  </div>
+  <div class="form-group" >
+    <button  class="btn btn-default" class="mr-1" name = "submitButton" id= "submit" type="submit" [disabled]="!assessmentForm.valid">
+      <i class="fa fa-floppy-o"></i>
+      Submit</button>
+    <button class="btn btn-default" class="mr-1" name = "resetButton" id= "reset" type="button" (click)="resetForm(assessmentForm)">
+      <i class="fa fa-repeat"></i>
+      Reset</button>
+  </div>
+</form>
